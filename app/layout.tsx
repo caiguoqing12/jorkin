@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { ConfigProvider } from 'antd';
 import { ModalProvider } from '@/component/ModalProvider';
 import ModalContainer from '@/component/ModalContainer';
+import { AuthProvider } from "@/contexts/AuthContext";
 import "./globals.css";
 
 const inter = Inter({
@@ -24,10 +25,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={`antialiased ${inter.className} bg-black/5`}>
         <ConfigProvider theme={{ token: { colorPrimary: '#FB6011' } }}>
-          <ModalProvider>
-            {children}
-            <ModalContainer />
-          </ModalProvider>
+          <AuthProvider>
+            <ModalProvider>
+              {children}
+              <ModalContainer />
+            </ModalProvider>
+          </AuthProvider>
         </ConfigProvider>
       </body>
     </html>

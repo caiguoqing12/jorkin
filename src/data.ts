@@ -3,11 +3,14 @@ import { JSONFileSync } from 'lowdb/node';
 import { join } from 'path';
 
 export type Item = {
-  id: string;
-  title: string;
-  content: string;
-  time: string;
-  answer: string;
+  name?: string;
+  login?: string;
+  id?: string;
+  title?: string;
+  content?: string;
+  time?: string;
+  answer?: string;
+  password?: string;
 };
 
 type Data = {
