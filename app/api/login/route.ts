@@ -6,7 +6,7 @@ export async function POST(req: NextRequest) {
   const { login, password } = await req.json();
   const db = createDB('user.json');
 
-  const user = db.getAllItems().find(item => item.login === login);
+  const user = db.getAllItems().find((item: { login: unknown; }) => item.login === login);
   if (!user) {
     return NextResponse.json({
       success: false,
