@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 
 interface AuthContextType {
   isLoggedIn: boolean;
-  user: { login: string } | null;
+  user: { login: string; name: string } | null;
   refresh: () => void;
   logout: () => void;
 }
@@ -11,7 +11,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState<{ login: string } | null>(null);
+  const [user, setUser] = useState<{ login: string; name: string } | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const fetchUser = async () => {
