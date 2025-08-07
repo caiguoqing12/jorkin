@@ -12,6 +12,7 @@ export default function AddLeetCodeModal() {
       await fetch("/api/leetcode", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: 'include',
         body: JSON.stringify(values),
       });
       if (typeof addModal.params?.updateFunc === "function") {

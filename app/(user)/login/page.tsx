@@ -15,12 +15,16 @@ const Page: React.FC = () => {
       setLoading(true);
       const r = await fetch("/api/login", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: 'include', // 确保接收和发送cookie
         body: JSON.stringify(values),
       });
       const data = await r.json();
       if (data.success) {
         await refresh(); // 登录成功后刷新登录态
-        router.push("/");
+        router.replace("/");
       } else {
         message.error(data.message);
       }

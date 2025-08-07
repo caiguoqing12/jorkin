@@ -13,11 +13,15 @@ const Page: React.FC = () => {
       setLoading(true);
       const r = await fetch("/api/register", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: 'include',
         body: JSON.stringify(values),
       });
       const data = await r.json();
       if (data.success) {
-        router.push("/login");
+        router.replace("/login");
       } else {
         message.error(data.message);
       }

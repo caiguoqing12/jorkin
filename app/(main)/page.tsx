@@ -16,7 +16,9 @@ export default function Home() {
     }[]
   >([]);
   const getList = async () => {
-    const res = await fetch("/api/leetcode");
+    const res = await fetch("/api/leetcode", {
+      credentials: 'include',
+    });
     const data = await res.json();
     setList(data);
   };

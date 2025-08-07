@@ -3,16 +3,18 @@ import React from "react";
 import Image from "next/image";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "antd";
-import router from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const { isLoggedIn, user, refresh } = useAuth();
+  const router = useRouter();
   const logout = () => {
     fetch("/api/logout", {
       method: "POST",
     }).then(() => {
+      console.log('logout');
       refresh();
-      router.push("/login");
+      router.replace("/login");
     });
   };
 
